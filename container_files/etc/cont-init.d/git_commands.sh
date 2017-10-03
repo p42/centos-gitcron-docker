@@ -10,6 +10,8 @@ if [ "" == "$PKG_OK" ]; then
   # sudo apt-get --force-yes --yes install the.package.name
 else
     echo "git is installed and functioning"
+    git config --global user.name "Docker Sidekick Container"
+    git config --global user.email "bcone+docker_sidekick@esu10.org"
 fi
 cd /var/www/html/wordpress/wp-content
 git add .
