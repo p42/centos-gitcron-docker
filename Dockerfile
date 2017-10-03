@@ -5,7 +5,6 @@ MAINTAINER Brandon Cone bcone@esu10.org
 
 COPY container_files /
 
-WORKDIR /var/www/html/wordpress/wp-content
 
 # RUN git add . && \
 # git commit -m 'Nightly Commit for $(date)'
