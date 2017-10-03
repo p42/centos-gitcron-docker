@@ -1,6 +1,6 @@
 #Install and configure [] 
 
-FROM project42/s6-centos:centos7
+FROM centos
 MAINTAINER Brandon Cone bcone@esu10.org
 
 COPY container_files /
@@ -11,11 +11,17 @@ COPY container_files /
 
 # RUN yum install -y git
 
-# RUN yum install -y git && \
+# RUN yum install -y git
 # git add . && \
 # git commit -m 'Nightly Commit for $(date)'
 
 WORKDIR /var/www/html/wordpress/wp-content
-RUN echo "Running Sidekick Container" 
+ENTRYPOINT ["/bin/bash"]
+CMD ["/scripts/git_commands.sh"]
+
+# RUN git add . && \
+# git commit -m "Nightly Commit for $(date)"
+
+# RUN echo "Running Sidekick Container" ?
 # && \
 # container_files/etc/cont-init.d/git_commands.sh

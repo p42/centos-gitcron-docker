@@ -15,6 +15,6 @@ else
     git config --global user.name "Docker Sidekick Container"
     git config --global user.email "bcone+docker_sidekick@esu10.org"
 fi
-cd /var/www/html/wordpress/wp-content
-git add .
-git commit -m 'Nightly Commit at $(time)'
+# cd /var/www/html/wordpress/wp-content
+# git add .
+# git commit -m 'Nightly Commit at $(time)'
