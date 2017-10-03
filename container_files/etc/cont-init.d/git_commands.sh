@@ -7,6 +7,8 @@ PKG_OK=$(yum list installed git|grep "Installed Packages")
 if [ "" == "$PKG_OK" ]; then
   echo "Git not found. Installing"
   yum install -y git
+  git config --global user.name "Docker Sidekick Container"
+  git config --global user.email "bcone+docker_sidekick@esu10.org"
   # sudo apt-get --force-yes --yes install the.package.name
 else
     echo "git is installed and functioning"

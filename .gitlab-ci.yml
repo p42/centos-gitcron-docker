@@ -1,7 +1,7 @@
  
 stages:
-  # - build
-  # - test
+  - build
+  - test
   - deploy
 
 variables:
@@ -12,41 +12,41 @@ variables:
 before_script:
   - docker info
 
-# build-master:
-#   tags:
-#     - docker
-#   stage: build
-#   script:
-#     - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
-#   only:
-#     - master
+build-master:
+  tags:
+    - docker
+  stage: build
+  script:
+    - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+  only:
+    - master
 
-# test-master:
-#   tags:
-#     - docker
-#   stage: test
-#   script:
-#     - docker run  --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests 
-#   only:
-#     - master
+test-master:
+  tags:
+    - docker
+  stage: test
+  script:
+    - docker run  --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests 
+  only:
+    - master
 
-# test:
-#   tags:
-#     - docker
-#   stage: test
-#   script:
-#     - docker run  --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests 
-#   except:
-#     - master
+test:
+  tags:
+    - docker
+  stage: test
+  script:
+    - docker run  --rm "${IMAGE_NAME}:${IMAGE_TAG}" /ci_tests/run_tests 
+  except:
+    - master
 
-# build:
-#   tags:
-#     - docker
-#   stage: build
-#   script:
-#     - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
-#   except:
-#     - master
+build:
+  tags:
+    - docker
+  stage: build
+  script:
+    - docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+  except:
+    - master
 
 deploy_to_github:
   tags:
