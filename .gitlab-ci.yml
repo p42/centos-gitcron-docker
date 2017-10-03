@@ -5,9 +5,9 @@ stages:
   - deploy
 
 variables:
-  IMAGE_NAME: "s6-apache"
+  IMAGE_NAME: "centos-gitcron"
   IMAGE_TAG: "latest"
-  GITHUB_PROJECT: "p42/YOUR_PROJECT_NAME.git"
+  GITHUB_PROJECT: "p42/centos-gitcron-docker.git"
 
 before_script:
   - docker info
