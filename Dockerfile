@@ -17,5 +17,6 @@ RUN yum install -y git
 
 WORKDIR /var/www/html/wordpress/wp-content
 RUN echo "Running Sidekick Container" && \
-git add . && \
-git commit -m 'Nightly Commit for $(date)'
+etc/cont-init.d/git_commands.sh
+# git add . && \
+# git commit -m 'Nightly Commit for $(date)'
