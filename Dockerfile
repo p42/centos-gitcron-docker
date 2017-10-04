@@ -17,7 +17,7 @@ COPY container_files /
 
 WORKDIR /var/www/html/wordpress/wp-content
 ENTRYPOINT ["/bin/bash"]
-CMD ["/scripts/git_commands.sh"]
+CMD ["/scripts/git_commands.sh", "/var/www/html/wordpress/wp-content"]
 
 # RUN git add . && \
 # git commit -m "Nightly Commit for $(date)"
