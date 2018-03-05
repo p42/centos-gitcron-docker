@@ -7,6 +7,16 @@ if [ ! -d "$1" ]; then
     exit 0
 fi
 
+if [ -e /run/secrets/id_rsa ];then
+    echo "Copying the private key, supplied via rancher secrets or other to ssh directory"
+    mkdir ~/.ssh
+    cp /run/secrets/id_rsa ~/.ssh/
+    chmod 600 ~/.ssh/id_rsa
+    ls -l ~/.ssh
+else
+    echo "No id_rsa file present. You should know that push and pull operations will likely fail"
+fi
+
 bash /scripts/git_install_setup.sh
 
 cd $1
