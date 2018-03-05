@@ -36,7 +36,7 @@ else
     git config --global user.email "bcone+docker_sidekick@esu10.org"
     if [ -n "$GIT_URL" ]; then
         echo "Remote url supplied, - ${GIT_URL} - adding origin."
-        git remote add origin ${GIR_URL}
+        git remote add origin ${GIT_URL}
         git pull origin master
     fi
 fi
