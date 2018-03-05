@@ -15,7 +15,8 @@ if [ -d .git ]; then
     echo "Git repo exists in this directory"
     git add . --all
     git commit -m "Nightly Commit for $(date)"
-    if [ ! -z $(git remote -v) ]; then
+    PKG_OK=$(git remote -v|grep "fatal")
+    if [ "" == "$PKG_OK" ]; then
         git push origin master
     fi
 else
