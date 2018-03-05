@@ -7,9 +7,17 @@ if [ ! -d "$1" ]; then
     exit 0
 fi
 
-if [ -e /run/secrets/id_rsa ];then
-    echo "Copying the private key, supplied via rancher secrets or other to ssh directory"
+if [ ! -d ~/.ssh ]; then
+    echo ".ssh directory does not exist. creating."
     mkdir ~/.ssh
+    ls ~/.ssh
+    echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+fi
+if [ -e /run/secrets/id_rsa ]; then
+    echo "Copying the private key, supplied via rancher secrets or other to ssh directory"
+        # Force in git.ops.esu10.org into the known hosts file.
+        # cat >> ~/.ssh/known_hosts <<EOF ${KNOWN_HOSTS}
+    # mkdir ~/.ssh
     cp /run/secrets/id_rsa ~/.ssh/
     chmod 600 ~/.ssh/id_rsa
     ls -l ~/.ssh
